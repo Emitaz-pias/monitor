@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change yourself</title>
+    <style>
+      body{
+        background-color: black;
+      }
+      .timer {
+        position: absolute;
+        background-color: turquoise;
+        padding:5%;
+        left: 450px;
+        top:5%;
+        border-radius:5%;
+        box-shadow: 10px 10px 10px 10px green;
+      }
+      .timeBox{
+        color: wheat;
+        background-color:rgb(0, 0, 0);
+        border-radius:50%;
+        padding:20%;
+        box-shadow: 10px 10px 10px red;
+-moz-box-shadow: 10px 10px 10px green;
+-webkit-box-shadow: 10px 10px 10px red;
+-o-box-shadow: 10px 10px 10px   green  ; }
+      
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="timer">
+        <p class="timeBox" id="days">Days : 00</p>
+        <p class="timeBox" id="hours">Hours : 00</p>
+        <p class="timeBox" id="mins">Mins : 00</p>
+        <p class="timeBox" id="secs">Secs : 00</p>
+  
+        <div >
+          <input type="datetime-local" name="startJourney" id="startInp" />
+  
+        <br />
+        <button id="startBtn">Start Yourself</button>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    // objectives
+    // userclicks a button it will name the mission  as h1
+
+    // after clicking the time will start counting
+    document.getElementById("startBtn").addEventListener("click", () => {
+      console.log("log");
+    });
+
+    const differenceUpdater = setInterval(() => {
+      const startTime = new Date("Mar 17, 2021 8:00:25").getTime();
+
+      const day2 = new Date().getTime();
+      const difference = day2 - startTime;
+      const converTday = Math.floor(difference / 86400000);
+      const convertHours = Math.floor((difference % 86400000) / 3600000);
+      const convertMinitues = Math.floor((difference % 3600000) / 60000);
+      const convertSecs = Math.floor((difference % 60000) / 1000);
+      updateTimer = (id, text, time) => {
+        const getElement = (document.getElementById(id).innerText =
+          text + time);
+      };
+      updateTimer("days", "Days:", converTday);
+      updateTimer("hours", "Hours:", convertHours);
+      updateTimer("mins", "Mins:", convertMinitues);
+      updateTimer("secs", "secs:", convertSecs);
+      // console.log(
+      //   "days-",
+      //   converTday,
+      //   "hours -",
+      //   convertHours,
+      //   "mins",
+      //   convertMinitues,
+      //   "sec",
+      //   convertSecs
+      // );
+    }, 1000);
+  </script>
+</html>
